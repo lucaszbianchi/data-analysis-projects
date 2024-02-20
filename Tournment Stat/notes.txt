@@ -1,0 +1,53 @@
+Tabela de Times:
+
+time_id (Chave Primária)
+nome_time
+liga_id (Chave Estrangeira referenciando a tabela de Ligas)
+Torres destruídas por partida
+Dragões abatidos por partida
+Barões abatidos por partida
+Arautos abatidos por partida
+Win rate na temporada
+Tempo médio das partidas vencidas
+chance_vitoria (ou um campo similar para armazenar a chance de vitória contra outros times)
+Tabela de Jogadores:
+
+jogador_id (Chave Primária)
+nome_jogador
+posicao (Top, Jungle, Mid, ADC, Support)
+Média de Abates, Mortes, Assistências na temporada
+Média de farm por minuto na temporada
+Média de ouro por minuto (talvez antes dos 15 minutos)
+Pontuação de Visão
+Tabela de Ligas:
+
+liga_id (Chave Primária)
+nome_liga
+Média de tempo das partidas
+Média de dragões 
+Média de barões
+Tabela de Partidas:
+
+partida_id (Chave Primária)
+time_azul (Chave Estrangeira referenciando a tabela de Times)
+time_vermelho (Chave Estrangeira referenciando a tabela de Times)
+tempo de partida
+Dragões abatidos
+Barões abatidos
+Gold time azul
+Gold time vermelho
+Quantidade de torres do time azul
+Quantidade de torres do time vermelho
+Quantidade de abates do time azul
+Quantidade de abates do time vermelho
+Quantidade de Barões do time azul
+Quantidade de Barões do time vermelho
+Quantidade de Gold do time azul
+Quantidade de Gold do time vermelho
+Vitória do time azul
+
+
+
+
+
+

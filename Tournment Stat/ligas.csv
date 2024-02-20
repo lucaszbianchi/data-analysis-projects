@@ -1,0 +1,17 @@
+League_id,Region_id,League,League Short,Year,Status
+1,8,Vietnam Championship Series,VCS,2023,Play-In
+2,4,League of Legends Championship Series,LCS,2023,Autoqualify
+3,6,LoL Japan League,LJL,2023,Play-In
+4,2,Tencent LoL Pro League,LPL,2023,Autoqualify
+5,4,North America League Championship Series,NA LCS,2023,Autoqualify
+6,1,LoL Champions Korea,LCK,2023,Autoqualify
+7,5,Liga Latinoamerica,LLA,2023,Play-In
+8,1,LoL The Champions,LTC,2023,Autoqualify
+9,3,Pacific Challengers League,PCL,2023,Play-In
+10,9,Circuit Brazilian League of Legends,CBLOL,2023,Play-In
+11,3,Pacific Championship Series,PCS,2023,Play-In
+12,12,LoL EMEA Championship,LEC,2022,Autoqualify
+13,10,LoL Circuit Oceania,LCO,2022,Play-In
+14,11,Turkish Championship League,TCL,2022,Play-In
+15,12,Europe League Championship Series,EU LCS,2022,Autoqualify
+16,10,Oceanic Pro League,OPL,2022,Play-In
