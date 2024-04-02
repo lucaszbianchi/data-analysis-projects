@@ -19,16 +19,28 @@ def inserir_categoria(i):
 def inserir_receita(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO Receitas (categoria, adicionado_em, valor) VALUES (?,?,?)"
+        query = "INSERT INTO Receitas (fonte, descrição, data, valor) VALUES (?,?,?,?)"
         cur.execute(query, i)
 
 # Inserir gastos
 def inserir_gastos(i):
     with con:
         cur = con.cursor()
-        query = "INSERT INTO Gastos (categoria, retirado_em, valor) VALUES (?,?,?)"
+        query = "INSERT INTO Gastos (categoria, descrição, data, valor) VALUES (?,?,?,?)"
         cur.execute(query, i)
-       
+
+def inserir_credito(i):
+    with con:
+        cur = con.cursor()
+        query = "INSERT INTO Credito (categoria, descrição, data, valor) VALUES (?,?,?,?)"
+        cur.execute(query, i)
+
+def inserir_vale(i):
+    with con:
+        cur = con.cursor()
+        query = "INSERT INTO ValeRefeição (categoria, descrição, data, valor) VALUES (?,?,?,?)"
+        cur.execute(query, i)
+
 # Deletar receitas
 def deletar_receitas(i):
     with con:
@@ -51,41 +63,79 @@ def ver_categorias():
         cur.execute("SELECT * FROM Categoria")
         rows = cur.fetchall()
         for row in rows:
-            lista_itens.append(row)
+            lista_itens.append(row[1])
     return lista_itens
 
 # Ver Receitas
-def ver_receitas():
+def ver_receitas(data_inicio=None, data_fim=None):
     lista_itens = []
     with con:
         cur = con.cursor()
-        cur.execute("SELECT * FROM Receitas")
+        if data_inicio is None or data_fim is None:
+            cur.execute("SELECT * FROM Receitas")
+        else:
+            cur.execute("SELECT * FROM Receitas WHERE data BETWEEN ? AND ?", (data_inicio, data_fim))
         rows = cur.fetchall()
         for row in rows:
             lista_itens.append(row)
     return lista_itens
+
 
 # Ver Gastos
-def ver_gastos():
+def ver_gastos(data_inicio=None, data_fim=None):
     lista_itens = []
     with con:
         cur = con.cursor()
-        cur.execute("SELECT * FROM Gastos")
+        if data_inicio is None or data_fim is None:
+            cur.execute("SELECT * FROM Gastos")
+        else:
+            cur.execute("SELECT * FROM Gastos WHERE data BETWEEN ? AND ?", (data_inicio, data_fim))
         rows = cur.fetchall()
         for row in rows:
             lista_itens.append(row)
     return lista_itens
 
-def tabela():
-    gastos = ver_gastos()
-    receitas = ver_receitas()
+def ver_credito(data_inicio=None, data_fim=None):
+    lista_itens = []
+    with con:
+        cur = con.cursor()
+        if data_inicio is None or data_fim is None:
+            cur.execute("SELECT * FROM Credito")
+        else:
+            cur.execute("SELECT * FROM Credito WHERE data BETWEEN ? AND ?", (data_inicio, data_fim))
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
+    return lista_itens
+
+def ver_vale(data_inicio=None, data_fim=None):
+    lista_itens = []
+    with con:
+        cur = con.cursor()
+        if data_inicio is None or data_fim is None:
+            cur.execute("SELECT * FROM ValeRefeição")
+        else:
+            cur.execute("SELECT * FROM ValeRefeição WHERE data BETWEEN ? AND ?", (data_inicio, data_fim))
+        rows = cur.fetchall()
+        for row in rows:
+            lista_itens.append(row)
+    return lista_itens
+
+def tabela(data_inicio=None, data_fim=None):
+    gastos = ver_gastos(data_inicio=data_inicio,data_fim=data_fim)
+    receitas = ver_receitas(data_inicio=data_inicio,data_fim=data_fim)
+    credito = ver_credito(data_inicio=data_inicio,data_fim=data_fim)
+    vale = ver_vale(data_inicio=data_inicio,data_fim=data_fim)
 
     tabela_lista = []
 
     for i in gastos:
         tabela_lista.append(i)
-
     for i in receitas:
+        tabela_lista.append(i)
+    for i in credito:
+        tabela_lista.append(i)
+    for i in vale:
         tabela_lista.append(i)
 
     return tabela_lista

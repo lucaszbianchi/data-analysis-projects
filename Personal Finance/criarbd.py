@@ -1,5 +1,7 @@
 import sqlite3 as lite
+import os
 
+if os.path.exists('dados.db'): os.remove('dados.db')
 con = lite.connect('dados.db')
 
 with con:
@@ -8,8 +10,16 @@ with con:
     
 with con:
     cur = con.cursor()
-    cur.execute('CREATE TABLE Receitas(id INTEGER PRIMARY KEY AUTOINCREMENT, categoria TEXT, adicionado_em DATE, valor DECIMAL)')
+    cur.execute('CREATE TABLE Receitas(id INTEGER PRIMARY KEY AUTOINCREMENT, fonte TEXT, descrição TEXT, data DATE, valor DECIMAL)')
 
 with con:
     cur = con.cursor()
-    cur.execute('CREATE TABLE Gastos(id INTEGER PRIMARY KEY AUTOINCREMENT, categoria TEXT, retirado_em DATE, valor DECIMAL)')
+    cur.execute('CREATE TABLE Gastos(id INTEGER PRIMARY KEY AUTOINCREMENT, categoria TEXT, descrição TEXT, data DATE, valor DECIMAL)')
+
+with con:
+    cur = con.cursor()
+    cur.execute('CREATE TABLE Credito(id INTEGER PRIMARY KEY AUTOINCREMENT, categoria TEXT, descrição TEXT, data DATE, valor DECIMAL)')
+
+with con:
+    cur = con.cursor()
+    cur.execute('CREATE TABLE ValeRefeição(id INTEGER PRIMARY KEY AUTOINCREMENT, categoria TEXT, descrição TEXT, data DATE, valor DECIMAL)')
