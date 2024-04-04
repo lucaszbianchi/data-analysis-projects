@@ -14,7 +14,12 @@ def inserir_categoria(i):
         cur = con.cursor()
         query = "INSERT INTO Categoria (nome) VALUES (?)"
         cur.execute(query, i)
-
+# Deletar categoria
+def deletar_categoria(i):
+    with con:
+        cur = con.cursor()
+        query = "DELETE FROM Categoria WHERE nome=?"
+        cur.execute(query, i)
 # Inserir receitas
 def inserir_receita(i):
     with con:
@@ -48,13 +53,50 @@ def deletar_receitas(i):
         query = "DELETE FROM Receitas WHERE id=?"
         cur.execute(query, i)
 
+# Deletar creditos
+def deletar_credito(i):
+    with con:
+        cur = con.cursor()
+        query = "DELETE FROM Credito WHERE id=?"
+        cur.execute(query, i)
+
+# Deletar ValeRefeição
+def deletar_valerefeição(i):
+    with con:
+        cur = con.cursor()
+        query = "DELETE FROM ValeRefeição WHERE id=?"
+        cur.execute(query, i)
+
 # Deletar gastos
 def deletar_gastos(i):
     with con:
         cur = con.cursor()
-        query = "DELETE FROM Receitas WHERE id=?"
+        query = "DELETE FROM Gastos WHERE id=?"
         cur.execute(query, i)
-
+# Atualizar gastos
+def atualizar_gastos(id, nova_categoria, nova_descricao):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE Gastos SET categoria=?, descrição=? WHERE id=?"
+        cur.execute(query, (nova_categoria, nova_descricao, id))
+# Atualizar receitas
+def atualizar_receitas(id, nova_categoria, nova_descricao):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE Receitas SET categoria=?, descrição=? WHERE id=?"
+        cur.execute(query, (nova_categoria, nova_descricao, id))
+# Atualizar credito
+def atualizar_credito(id, nova_categoria, nova_descricao):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE Credito SET categoria=?, descrição=? WHERE id=?"
+        cur.execute(query, (nova_categoria, nova_descricao, id))
+# Atualizar ValeRefeição
+def atualizar_vale(id, nova_categoria, nova_descricao):
+    with con:
+        cur = con.cursor()
+        query = "UPDATE ValeRefeilção SET categoria=?, descrição=? WHERE id=?"
+        cur.execute(query, (nova_categoria, nova_descricao, id))
 # Ver Categorias
 def ver_categorias():
     lista_itens = []
