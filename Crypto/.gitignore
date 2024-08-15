@@ -118,7 +118,5 @@ dmypy.json
 cython_debug/
 
 # Data files
-btc_data.csv
-btc_data_with_metrics.csv
-btc_data_with_strategy.csv
-btc_investment_simulation.csv
+*.csv
+.coderignore
